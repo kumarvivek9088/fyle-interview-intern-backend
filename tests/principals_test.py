@@ -26,7 +26,7 @@ def test_grade_assignment_draft_assignment(client, h_principal):
         },
         headers=h_principal
     )
-
+    print(response.data)
     assert response.status_code == 400
 
 
