@@ -18,10 +18,10 @@ def create_n_graded_assignments_for_teacher(number: int = 0, teacher_id: int = 1
     - int: Count of assignments with grade 'A'.
     """
     # Count the existing assignments with grade 'A' for the specified teacher
-    grade_a_counter: int = Assignment.filter(
-        Assignment.teacher_id == teacher_id,
-        Assignment.grade == GradeEnum.A
-    ).count()
+    # grade_a_counter: int = Assignment.filter(
+    #     Assignment.teacher_id == teacher_id,
+    #     Assignment.grade == GradeEnum.A
+    # ).count()
 
     
     # Create 'n' graded assignments
@@ -42,8 +42,8 @@ def create_n_graded_assignments_for_teacher(number: int = 0, teacher_id: int = 1
         db.session.add(assignment)
 
         # Update the grade_a_counter if the grade is 'A'
-        if grade == GradeEnum.A:
-            grade_a_counter = grade_a_counter + 1
+        # if grade == GradeEnum.A:
+        #     grade_a_counter = grade_a_counter + 1
 
     # Commit changes to the database
     db.session.commit()

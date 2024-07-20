@@ -3,7 +3,6 @@ from core import db
 from core.apis import decorators
 from core.apis.responses import APIResponse
 from core.models.assignments import Assignment
-from core.models.users import User
 
 from .schema import AssignmentSchema, AssignmentGradeSchema
 teacher_assignments_resources = Blueprint('teacher_assignments_resources', __name__)
@@ -33,10 +32,3 @@ def grade_assignment(p, incoming_payload):
     db.session.commit()
     graded_assignment_dump = AssignmentSchema().dump(graded_assignment)
     return APIResponse.respond(data=graded_assignment_dump)
-
-@teacher_assignments_resources.route('/viewusers',methods=['GET'])
-def show_all():
-    users = User.query.all()
-    for user in users:
-        print(user.username,user.id)
-    return APIResponse.respond(data={"hello":"hii"})

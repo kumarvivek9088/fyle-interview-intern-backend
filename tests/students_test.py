@@ -1,3 +1,9 @@
+def test_ready_endpoint(client):
+    response = client.get('/')
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data['status'] == 'ready'
+
 def test_get_assignments_student_1(client, h_student_1):
     response = client.get(
         '/student/assignments',
